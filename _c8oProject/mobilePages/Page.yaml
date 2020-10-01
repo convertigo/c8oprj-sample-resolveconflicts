@@ -1,0 +1,302 @@
+↑isRoot: true
+comment: My First Page as root page
+preloadPriority: high
+scriptContent: 
+  - xmlizable: 
+    - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
+    - com.twinsoft.convertigo.beans.common.FormatedContent: 
+      →: |
+        /*Begin_c8o_PageImport*/
+        /*End_c8o_PageImport*/
+        /*Begin_c8o_PageDeclaration*/
+        	/*End_c8o_PageDeclaration*/
+        /*Begin_c8o_PageConstructor*/
+        		/*End_c8o_PageConstructor*/
+        /*Begin_c8o_PageFunction*/
+        	/*End_c8o_PageFunction*/
+        
+segment: path-to-page
+title: First page
+↓Header [mobile.components.UIDynamicElement-1491634212350]: 
+  beanData: '{"ionBean":"Header"}'
+  comment: Page header
+  tagName: ion-header
+  ↓NavBar [mobile.components.UIDynamicElement-1491634231108]: 
+    beanData: '{"ionBean":"NavBar"}'
+    tagName: ion-navbar
+    ↓BarTitle [mobile.components.UIDynamicElement-1491634265317]: 
+      beanData: '{"ionBean":"BarTitle"}'
+      tagName: ion-title
+      ↓Text [mobile.components.UIText-1491634275121]: 
+        i18n: false
+        textValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
+            - MobileSmartSourceType: plain:Resolve Conflicts - 
+      ↓Text1 [mobile.components.UIText-1601554899249]: 
+        textValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
+            - MobileSmartSourceType: source:{"filter":"Sequence","project":"ResolveConflicts","input":"listen(['ResolveConflicts.Login'])?.authenticatedUserID"}
+    ↓Button [mobile.components.UIDynamicElement-1491634442029]: 
+      beanData: '{"ionBean":"Button","MenuMode":"plain:menuToggle"}'
+      comment: A button to toggle the menu
+      tagName: button
+      ↓Icon [mobile.components.UIDynamicElement-1491634475867]: 
+        beanData: '{"ionBean":"Icon","IconName":"plain:menu"}'
+        tagName: ion-icon
+    ↓ButtonSet [mobile.components.UIDynamicElement-1491634611427]: 
+      beanData: '{"ionBean":"ButtonSet","SetPosition":"plain:right"}'
+      tagName: ion-buttons
+      ↓Button [mobile.components.UIDynamicElement-1491634621907]: 
+        beanData: '{"ionBean":"Button"}'
+        tagName: button
+        ↓Icon [mobile.components.UIDynamicElement-1491634637555]: 
+          beanData: '{"ionBean":"Icon","IconName":"plain:more"}'
+          tagName: ion-icon
+↓Content [mobile.components.UIDynamicElement-1489674805352]: 
+  beanData: '{"ionBean":"Content"}'
+  comment: Page content
+  tagName: ion-content
+  ↓Div [mobile.components.UIDynamicElement-1601546377430]: 
+    beanData: '{"ionBean":"DivTag"}'
+    tagName: div
+    ↓Text1 [mobile.components.UIText-1601560888004]: 
+      i18n: false
+      textValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
+          - MobileSmartSourceType: 'plain:local: '
+    ↓Text [mobile.components.UIText-1601546383156]: 
+      i18n: false
+      textValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
+          - MobileSmartSourceType: script:window.JSON.stringify(listen(['fs://resolveconflicts_fullsync.get']))
+  ↓Tag [mobile.components.UIElement-1601557928767]: 
+    selfClose: true
+    tagName: hr
+  ↓Div2 [mobile.components.UIDynamicElement-1601557898741]: 
+    beanData: '{"ionBean":"DivTag"}'
+    tagName: div
+    ↓Text1 [mobile.components.UIText-1601560905464]: 
+      i18n: false
+      textValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
+          - MobileSmartSourceType: 'plain:remote: '
+    ↓Text [mobile.components.UIText-1601557898744]: 
+      i18n: false
+      textValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
+          - MobileSmartSourceType: script:window.JSON.stringify(listen(['ResolveConflicts.GetTheDoc'])?.transaction?.document?.couchdb_output)
+↓Footer [mobile.components.UIDynamicElement-1491634242460]: 
+  beanData: '{"ionBean":"Footer"}'
+  comment: Page footer
+  tagName: ion-footer
+  ↓ToolBar [mobile.components.UIDynamicElement-1491634317538]: 
+    beanData: '{"ionBean":"ToolBar"}'
+    tagName: ion-toolbar
+    ↓Reset [mobile.components.UIDynamicElement-1601543626724]: 
+      beanData: '{"ionBean":"ButtonSet","SetPosition":"plain:left"}'
+      tagName: ion-buttons
+      ↓Button [mobile.components.UIDynamicElement-1601543626727]: 
+        beanData: '{"ionBean":"Button"}'
+        tagName: button
+        ↓Text [mobile.components.UIText-1601543626730]: 
+          textValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
+              - MobileSmartSourceType: plain:Reset
+      ↓Event [mobile.components.UIControlEvent-1601543626733]: 
+        ↓CallFullSync [mobile.components.UIDynamicAction-1601543626736]: 
+          beanData: |
+            '{
+             "ionBean": "CallFullSyncAction",
+             "requestable": "plain:ResolveConflicts.resolveconflicts_fullsync",
+             "verb": "plain:reset"
+            }'
+    ↓LoginA [mobile.components.UIDynamicElement-1601542158823]: 
+      beanData: '{"ionBean":"ButtonSet","SetPosition":"plain:left"}'
+      tagName: ion-buttons
+      ↓Button [mobile.components.UIDynamicElement-1601542158826]: 
+        beanData: '{"ionBean":"Button"}'
+        tagName: button
+        ↓Text [mobile.components.UIText-1601542158829]: 
+          i18n: false
+          textValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
+              - MobileSmartSourceType: plain:Login A
+      ↓Event [mobile.components.UIControlEvent-1601542158832]: 
+        ↓CallSequence [mobile.components.UIDynamicAction-1601543279133]: 
+          beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:ResolveConflicts.Login"}'
+          ↓user [mobile.components.UIControlVariable-1601554802083]: 
+            comment: new variable
+            varValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
+                - MobileSmartSourceType: plain:A
+    ↓LoginB [mobile.components.UIDynamicElement-1601542963669]: 
+      beanData: '{"ionBean":"ButtonSet","SetPosition":"plain:left"}'
+      tagName: ion-buttons
+      ↓Button [mobile.components.UIDynamicElement-1601542963672]: 
+        beanData: '{"ionBean":"Button"}'
+        tagName: button
+        ↓Text [mobile.components.UIText-1601542963675]: 
+          i18n: false
+          textValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
+              - MobileSmartSourceType: plain:Login B
+      ↓Event [mobile.components.UIControlEvent-1601542963678]: 
+        ↓CallSequence [mobile.components.UIDynamicAction-1601543314877]: 
+          beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:ResolveConflicts.Login"}'
+          ↓user [mobile.components.UIControlVariable-1601554832143]: 
+            comment: new variable
+            varValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
+                - MobileSmartSourceType: plain:B
+    ↓Pull [mobile.components.UIDynamicElement-1491634325595]: 
+      beanData: '{"ionBean":"ButtonSet","SetPosition":"plain:left"}'
+      tagName: ion-buttons
+      ↓Button [mobile.components.UIDynamicElement-1491634332730]: 
+        beanData: '{"ionBean":"Button"}'
+        tagName: button
+        ↓Text [mobile.components.UIText-1491634340354]: 
+          textValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
+              - MobileSmartSourceType: plain:Pull
+      ↓Event [mobile.components.UIControlEvent-1601541792163]: 
+        ↓CallFullSync [mobile.components.UIDynamicAction-1601541802251]: 
+          beanData: |
+            '{
+             "ionBean": "CallFullSyncAction",
+             "requestable": "plain:ResolveConflicts.resolveconflicts_fullsync",
+             "verb": "plain:replicate_pull"
+            }'
+          ↓CallFullSync [mobile.components.UIDynamicAction-1601548239238]: 
+            beanData: '{"ionBean":"CallFullSyncAction","requestable":"plain:ResolveConflicts.resolveconflicts_fullsync"}'
+            ↓docid [mobile.components.UIControlVariable-1601548239241]: 
+              varValue: 
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
+                  - MobileSmartSourceType: plain:thedoc
+            ↓_conflicts [mobile.components.UIControlVariable-1601548239244]: 
+              varValue: 
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
+                  - MobileSmartSourceType: script:true
+    ↓Get [mobile.components.UIDynamicElement-1491634373539]: 
+      beanData: '{"ionBean":"ButtonSet","SetPosition":"plain:left"}'
+      tagName: ion-buttons
+      ↓Button [mobile.components.UIDynamicElement-1491634376874]: 
+        beanData: '{"ionBean":"Button"}'
+        tagName: button
+        ↓Get [mobile.components.UIText-1491634383107]: 
+          textValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
+              - MobileSmartSourceType: plain:Get
+      ↓Event [mobile.components.UIControlEvent-1601543413884]: 
+        ↓CallFullSync [mobile.components.UIDynamicAction-1601543413887]: 
+          beanData: '{"ionBean":"CallFullSyncAction","requestable":"plain:ResolveConflicts.resolveconflicts_fullsync"}'
+          ↓docid [mobile.components.UIControlVariable-1601543476682]: 
+            varValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
+                - MobileSmartSourceType: plain:thedoc
+          ↓_conflicts [mobile.components.UIControlVariable-1601547587277]: 
+            varValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
+                - MobileSmartSourceType: script:true
+        ↓CallSequence [mobile.components.UIDynamicAction-1601557847430]: 
+          beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:ResolveConflicts.GetTheDoc"}'
+    ↓Post [mobile.components.UIDynamicElement-1601541227293]: 
+      beanData: '{"ionBean":"ButtonSet","SetPosition":"plain:left"}'
+      tagName: ion-buttons
+      ↓Button [mobile.components.UIDynamicElement-1601541227296]: 
+        beanData: '{"ionBean":"Button"}'
+        tagName: button
+        ↓Get [mobile.components.UIText-1601541227299]: 
+          textValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
+              - MobileSmartSourceType: plain:Post
+      ↓Event [mobile.components.UIControlEvent-1601543521654]: 
+        ↓CallFullSync [mobile.components.UIDynamicAction-1601543521657]: 
+          beanData: |
+            '{
+             "ionBean": "CallFullSyncAction",
+             "requestable": "plain:ResolveConflicts.resolveconflicts_fullsync",
+             "verb": "plain:post"
+            }'
+          ↓_id [mobile.components.UIControlVariable-1601543521660]: 
+            varValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
+                - MobileSmartSourceType: plain:thedoc
+          ↓c8oGrp [mobile.components.UIControlVariable-1601543553637]: 
+            varValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
+                - MobileSmartSourceType: plain:ResolveConflicts
+          ↓_use_policy [mobile.components.UIControlVariable-1601547703552]: 
+            varValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
+                - MobileSmartSourceType: plain:override
+          ↓CallFullSync [mobile.components.UIDynamicAction-1601548226071]: 
+            beanData: '{"ionBean":"CallFullSyncAction","requestable":"plain:ResolveConflicts.resolveconflicts_fullsync"}'
+            ↓docid [mobile.components.UIControlVariable-1601548226074]: 
+              varValue: 
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
+                  - MobileSmartSourceType: plain:thedoc
+            ↓_conflicts [mobile.components.UIControlVariable-1601548226077]: 
+              varValue: 
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
+                  - MobileSmartSourceType: script:true
+          ↓date [mobile.components.UIControlVariable-1601548474188]: 
+            varValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
+                - MobileSmartSourceType: script:"" + new Date()
+    ↓Push [mobile.components.UIDynamicElement-1601541283442]: 
+      beanData: '{"ionBean":"ButtonSet","SetPosition":"plain:left"}'
+      tagName: ion-buttons
+      ↓Button [mobile.components.UIDynamicElement-1601541283445]: 
+        beanData: '{"ionBean":"Button"}'
+        tagName: button
+        ↓Text [mobile.components.UIText-1601541283448]: 
+          textValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
+              - MobileSmartSourceType: plain:Push
+        ↓Event [mobile.components.UIControlEvent-1601548290907]: 
+          ↓CallFullSync [mobile.components.UIDynamicAction-1601548290910]: 
+            beanData: |
+              '{
+               "ionBean": "CallFullSyncAction",
+               "requestable": "plain:ResolveConflicts.resolveconflicts_fullsync",
+               "verb": "plain:replicate_push"
+              }'
+            ↓CallFullSync [mobile.components.UIDynamicAction-1601548290913]: 
+              beanData: '{"ionBean":"CallFullSyncAction","requestable":"plain:ResolveConflicts.resolveconflicts_fullsync"}'
+              ↓docid [mobile.components.UIControlVariable-1601548290916]: 
+                varValue: 
+                  - xmlizable: 
+                    - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
+                    - MobileSmartSourceType: plain:thedoc
+              ↓_conflicts [mobile.components.UIControlVariable-1601548290919]: 
+                varValue: 
+                  - xmlizable: 
+                    - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
+                    - MobileSmartSourceType: script:true
+              ↓CallSequence [mobile.components.UIDynamicAction-1601557885170]: 
+                beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:ResolveConflicts.GetTheDoc"}'

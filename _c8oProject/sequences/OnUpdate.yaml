@@ -1,0 +1,108 @@
+↓Input_variables [steps.InputVariablesStep-1601558323895]: 
+  output: true
+↓Call_Transaction [steps.TransactionStep-1601558343766]: 
+  sourceTransaction: ResolveConflicts.resolveconflicts_fullsync.GetDocument
+↓Conflicts [steps.XMLComplexStep-1601559649429]: 
+  nodeName: conflicts
+  output: false
+  ↓type [steps.XMLAttributeStep-1601560008800]: 
+    nodeName: type
+    nodeText: array
+  ↓Iterator [steps.IteratorStep-1601559154110]: 
+    sourceDefinition: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+        - com.twinsoft.convertigo.beans.common.XMLVector: 
+          - java.lang.String: 
+            - ↑value: 1601558343766
+          - java.lang.String: 
+            - ↑value: ./document/couchdb_output/_conflicts/item
+    ↓Call_Transaction [steps.TransactionStep-1601559195205]: 
+      sourceTransaction: ResolveConflicts.resolveconflicts_fullsync.GetDocument
+      ↓_use_docid [variables.StepVariable-1601559195207]: 
+        description: Document ID
+        sourceDefinition: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+            - com.twinsoft.convertigo.beans.common.XMLVector: 
+              - java.lang.String: 
+                - ↑value: 1601558343766
+              - java.lang.String: 
+                - ↑value: ./document/couchdb_output/_id/text()
+      ↓_use_rev [variables.StepVariable-1601559195209]: 
+        description: (string) – Retrieves document of specified revision. Optional
+        sourceDefinition: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+            - com.twinsoft.convertigo.beans.common.XMLVector: 
+              - java.lang.String: 
+                - ↑value: 1601559154110
+              - java.lang.String: 
+                - ↑value: ./text()
+    ↓conflict [steps.XMLComplexStep-1601559683605]: 
+      nodeName: conflict
+      output: false
+      ↓Copy [steps.XMLCopyStep-1601559704947]: 
+        output: false
+        sourceDefinition: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+            - com.twinsoft.convertigo.beans.common.XMLVector: 
+              - java.lang.String: 
+                - ↑value: 1601559195205
+              - java.lang.String: 
+                - ↑value: ./document/couchdb_output/*[local-name()='date' or local-name()='_c8oAcl']
+    ↓Call_Transaction1 [steps.TransactionStep-1601560297966]: 
+      sourceTransaction: ResolveConflicts.resolveconflicts_fullsync.DeleteDocument
+      ↓_use_docid [variables.StepVariable-1601560297968]: 
+        description: Document ID
+        sourceDefinition: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+            - com.twinsoft.convertigo.beans.common.XMLVector: 
+              - java.lang.String: 
+                - ↑value: 1601558343766
+              - java.lang.String: 
+                - ↑value: ./document/couchdb_output/_id/text()
+      ↓_use_rev [variables.StepVariable-1601560297970]: 
+        description: (string) – Actual document’s revision
+        sourceDefinition: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+            - com.twinsoft.convertigo.beans.common.XMLVector: 
+              - java.lang.String: 
+                - ↑value: 1601559154110
+              - java.lang.String: 
+                - ↑value: ./text()
+↓IfExist [steps.IfExistStep-1601560741772]: 
+  sourceDefinition: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - java.lang.String: 
+          - ↑value: 1601559649429
+        - java.lang.String: 
+          - ↑value: ./conflict
+  ↓Call_Transaction1 [steps.TransactionStep-1601560101665]: 
+    sourceTransaction: ResolveConflicts.resolveconflicts_fullsync.PostDocument
+    ↓_id [variables.StepVariable-1601560101667]: 
+      description: Document id
+      sourceDefinition: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: 1601558343766
+            - java.lang.String: 
+              - ↑value: ./document/couchdb_output/_id/text()
+    ↓data [variables.StepVariable-1601560101669]: 
+      description: Document content
+      sourceDefinition: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: 1601559649429
+            - java.lang.String: 
+              - ↑value: ./conflict
+↓doc [variables.RequestableMultiValuedVariable-1601558271267]: 

@@ -1,0 +1,21 @@
+↑convertigo: 7.7.0.m006
+↓ResolveConflicts [core.Project]: 
+  comment: Convertigo Mobile builder Project
+  corsOrigin: =Origin
+  ↓resolveconflicts_fullsync [connectors.FullSyncConnector]: 🗏 connectors/resolveconflicts_fullsync.yaml
+  ↓GetTheDoc [sequences.GenericSequence]: 🗏 sequences/GetTheDoc.yaml
+  ↓Login [sequences.GenericSequence]: 🗏 sequences/Login.yaml
+  ↓OnUpdate [sequences.GenericSequence]: 🗏 sequences/OnUpdate.yaml
+  ↓Reset [sequences.GenericSequence]: 🗏 sequences/Reset.yaml
+  ↓MobileApplication [core.MobileApplication]: 
+    comment: Describes the mobile application global properties
+    splashRemoveMode: beforeUpdate
+    ↓Android [mobileplatforms.Android]: 
+      comment: Android platform
+    ↓iOS [mobileplatforms.IOs]: 
+      comment: iOS platform
+    ↓Application [mobile.components.ApplicationComponent]: 🗏 mobileApplication.yaml
+  ↓CouchDb_schema [references.ImportXsdSchemaReference]: 
+    urlpath: http://localhost:18080/convertigo/xsd/couchdb/CouchDb.xsd
+  ↓lib_FullSyncGrp_reference [references.ProjectSchemaReference]: 
+    projectName: lib_FullSyncGrp

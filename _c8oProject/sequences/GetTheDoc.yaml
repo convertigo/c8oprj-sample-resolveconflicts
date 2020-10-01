@@ -1,0 +1,6 @@
+↓Call_Transaction [steps.TransactionStep-1601557814560]: 
+  output: true
+  sourceTransaction: ResolveConflicts.resolveconflicts_fullsync.GetDocument
+  ↓_use_docid [variables.StepVariable-1601559091340]: 
+    description: Document ID
+    value: thedoc
