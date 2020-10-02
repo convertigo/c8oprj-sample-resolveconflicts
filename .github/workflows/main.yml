@@ -1,0 +1,70 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Convertigo CI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on: push
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: macos-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Setup Java
+      uses: actions/setup-java@v1.3.0
+      with:
+        java-version: '11'
+    - name: Import iOS certificates
+      uses: apple-actions/import-codesign-certs@v1
+      with: 
+        p12-file-base64: ${{ secrets.IOS_P12_B64 }}
+        p12-password: ${{ secrets.IOS_P12_PASSWORD }}
+    - name: Import IOS Mobile Provision
+      env:
+        IOS_PROFILE_B64: ${{ secrets.IOS_PROFILE_B64 }}
+      run: |
+        echo $IOS_PROFILE_B64 | base64 -d > ios.mobileprovision
+    - name: Import Android Keystore
+      env:
+        ANDROID_KEYSTORE_B64: ${{ secrets.ANDROID_KEYSTORE_B64 }}
+      run: |
+        echo $ANDROID_KEYSTORE_B64 | base64 -d > android.keystore
+    - name: Run Convertigo build
+      env:
+        ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+        ANDROID_ALIAS: ${{ secrets.ANDROID_ALIAS }}
+        ANDROID_PASSWORD: ${{ secrets.ANDROID_PASSWORD }}
+      run: |
+        echo "Build MyFirstNGX"
+        gradle --no-daemon --stacktrace --info localBuild \
+          -Pconvertigo.performsMobileBuild=true \
+          -Pconvertigo.load.mobileApplicationEndpoint=https://beta.convertigo.net/convertigo \
+          -Pconvertigo.localBuild.iosProvisioningProfile=$PWD/ios.mobileprovision \
+          -Pconvertigo.localBuild.androidKeystore=$PWD/android.keystore \
+          -Pconvertigo.localBuild.androidKeystorePassword=$ANDROID_KEYSTORE_PASSWORD \
+          -Pconvertigo.localBuild.androidAlias=$ANDROID_ALIAS \
+          -Pconvertigo.localBuild.androidPassword=$ANDROID_PASSWORD
+    - name: Echo env bis
+      run: |
+        env
+        pwd
+        mkdir -p build
+        ls -lha build
+    - name: Upload IOS packages
+      uses: actions/upload-artifact@v2
+      with:
+        name: IOS Packages
+        path: build/localBuild/*.ipa
+    - name: Upload Android packages
+      uses: actions/upload-artifact@v2
+      with:
+        name: Android Packages
+        path: build/localBuild/*.apk 
