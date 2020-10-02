@@ -5,8 +5,7 @@ databaseName: resolveconflicts_fullsync
     description: Document ID
   ↓_use_rev [variables.RequestableVariable-1601560286862]: 
     description: (string) – Actual document’s revision
-↓GetDocument [transactions.couchdb.GetDocumentTransaction]: 
-  p_docid: thedoc
+↓GetDocumentWithConflicts [transactions.couchdb.GetDocumentTransaction]: 
   q_conflicts: true
   ↓_use_docid [variables.RequestableVariable-1601559081733]: 
     description: Document ID
@@ -14,18 +13,16 @@ databaseName: resolveconflicts_fullsync
     description: (string) – Retrieves document of specified revision. Optional
 ↓GetServerInfo [transactions.couchdb.GetServerInfoTransaction]: 
   ↑default: true
-↓PostDocument [transactions.couchdb.PostDocumentTransaction]: 
+↓PostDocumentMerge [transactions.couchdb.PostDocumentTransaction]: 
   fullSyncAclPolicy: fromKeyC8oAcl
   p_json_base: '{"_c8oAcl": "robot"}'
   policy: merge
   ↓_id [variables.RequestableVariable-1601560086230]: 
     description: Document id
-  ↓data [variables.RequestableVariable-1601560086232]: 
+  ↓data [variables.RequestableVariable-1601624367254]: 
     description: Document content
 ↓ResetDatabase [transactions.couchdb.ResetDatabaseTransaction]: 
-↓TestDB [transactions.couchdb.PostDocumentTransaction]: 
-  fullSyncAclPolicy: fromKeyC8oAcl
-  p_json_base: '{"_id":"test","_c8oAcl":"test"}'
-  policy: override
 ↓UpdateAll [couchdb.FullSyncFilterListener]: 
+  chunk: 20
+  comment: Call the OnUpdate Sequence when client documents are pushed
   targetSequence: ResolveConflicts.OnUpdate

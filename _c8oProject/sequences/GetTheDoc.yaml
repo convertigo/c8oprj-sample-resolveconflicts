@@ -1,6 +1,7 @@
+comment: Output the server side document
 ↓Call_Transaction [steps.TransactionStep-1601557814560]: 
   output: true
-  sourceTransaction: ResolveConflicts.resolveconflicts_fullsync.GetDocument
+  sourceTransaction: ResolveConflicts.resolveconflicts_fullsync.GetDocumentWithConflicts
   ↓_use_docid [variables.StepVariable-1601559091340]: 
     description: Document ID
     value: thedoc

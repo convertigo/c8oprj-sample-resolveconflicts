@@ -1,3 +1,4 @@
+comment: Authenticate the session for UserA or UserB
 ↓Auth [steps.SetAuthenticatedUserStep-1601543088982]: 
   output: true
   userid: 

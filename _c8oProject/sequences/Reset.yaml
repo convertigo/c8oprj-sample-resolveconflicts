@@ -1,2 +1,3 @@
+comment: Reset the server side database
 ↓Call_Transaction [steps.TransactionStep-1601558066201]: 
   sourceTransaction: ResolveConflicts.resolveconflicts_fullsync.ResetDatabase

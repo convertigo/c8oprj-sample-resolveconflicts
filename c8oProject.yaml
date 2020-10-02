@@ -1,14 +1,15 @@
 ↑convertigo: 7.7.0.m006
 ↓ResolveConflicts [core.Project]: 
-  comment: Convertigo Mobile builder Project
+  comment: Sample project that create and show how to resolve FullSync conflicts
   corsOrigin: =Origin
+  version: 2020.10.02
   ↓resolveconflicts_fullsync [connectors.FullSyncConnector]: 🗏 connectors/resolveconflicts_fullsync.yaml
   ↓GetTheDoc [sequences.GenericSequence]: 🗏 sequences/GetTheDoc.yaml
   ↓Login [sequences.GenericSequence]: 🗏 sequences/Login.yaml
   ↓OnUpdate [sequences.GenericSequence]: 🗏 sequences/OnUpdate.yaml
   ↓Reset [sequences.GenericSequence]: 🗏 sequences/Reset.yaml
   ↓MobileApplication [core.MobileApplication]: 
-    comment: Describes the mobile application global properties
+    comment: Describes the sample mobile application
     splashRemoveMode: beforeUpdate
     ↓Android [mobileplatforms.Android]: 
       comment: Android platform

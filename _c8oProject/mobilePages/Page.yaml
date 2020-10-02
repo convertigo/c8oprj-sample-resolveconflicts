@@ -1,5 +1,5 @@
 ↑isRoot: true
-comment: My First Page as root page
+comment: Sample page where make the conflict
 preloadPriority: high
 scriptContent: 
   - xmlizable: 
@@ -58,7 +58,7 @@ title: First page
   beanData: '{"ionBean":"Content"}'
   comment: Page content
   tagName: ion-content
-  ↓Div [mobile.components.UIDynamicElement-1601546377430]: 
+  ↓DivLocal [mobile.components.UIDynamicElement-1601546377430]: 
     beanData: '{"ionBean":"DivTag"}'
     tagName: div
     ↓Text1 [mobile.components.UIText-1601560888004]: 
@@ -76,7 +76,7 @@ title: First page
   ↓Tag [mobile.components.UIElement-1601557928767]: 
     selfClose: true
     tagName: hr
-  ↓Div2 [mobile.components.UIDynamicElement-1601557898741]: 
+  ↓DivRemote [mobile.components.UIDynamicElement-1601557898741]: 
     beanData: '{"ionBean":"DivTag"}'
     tagName: div
     ↓Text1 [mobile.components.UIText-1601560905464]: 
@@ -105,10 +105,11 @@ title: First page
         beanData: '{"ionBean":"Button"}'
         tagName: button
         ↓Text [mobile.components.UIText-1601543626730]: 
+          i18n: false
           textValue: 
             - xmlizable: 
               - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
-              - MobileSmartSourceType: plain:Reset
+              - MobileSmartSourceType: plain:Reset Local
       ↓Event [mobile.components.UIControlEvent-1601543626733]: 
         ↓CallFullSync [mobile.components.UIDynamicAction-1601543626736]: 
           beanData: |
@@ -166,6 +167,7 @@ title: First page
         beanData: '{"ionBean":"Button"}'
         tagName: button
         ↓Text [mobile.components.UIText-1491634340354]: 
+          i18n: false
           textValue: 
             - xmlizable: 
               - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
@@ -197,6 +199,7 @@ title: First page
         beanData: '{"ionBean":"Button"}'
         tagName: button
         ↓Get [mobile.components.UIText-1491634383107]: 
+          i18n: false
           textValue: 
             - xmlizable: 
               - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
@@ -223,6 +226,7 @@ title: First page
         beanData: '{"ionBean":"Button"}'
         tagName: button
         ↓Get [mobile.components.UIText-1601541227299]: 
+          i18n: false
           textValue: 
             - xmlizable: 
               - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
@@ -274,6 +278,7 @@ title: First page
         beanData: '{"ionBean":"Button"}'
         tagName: button
         ↓Text [mobile.components.UIText-1601541283448]: 
+          i18n: false
           textValue: 
             - xmlizable: 
               - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType

@@ -1,92 +1,35 @@
+comment: Sequence called when FullSync documents are pushed from clients
 ↓Input_variables [steps.InputVariablesStep-1601558323895]: 
+  comment: Allow to peek incoming documents
   output: true
-↓Call_Transaction [steps.TransactionStep-1601558343766]: 
-  sourceTransaction: ResolveConflicts.resolveconflicts_fullsync.GetDocument
-↓Conflicts [steps.XMLComplexStep-1601559649429]: 
-  nodeName: conflicts
-  output: false
-  ↓type [steps.XMLAttributeStep-1601560008800]: 
-    nodeName: type
-    nodeText: array
-  ↓Iterator [steps.IteratorStep-1601559154110]: 
-    sourceDefinition: 
-      - xmlizable: 
-        - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
-        - com.twinsoft.convertigo.beans.common.XMLVector: 
-          - java.lang.String: 
-            - ↑value: 1601558343766
-          - java.lang.String: 
-            - ↑value: ./document/couchdb_output/_conflicts/item
-    ↓Call_Transaction [steps.TransactionStep-1601559195205]: 
-      sourceTransaction: ResolveConflicts.resolveconflicts_fullsync.GetDocument
-      ↓_use_docid [variables.StepVariable-1601559195207]: 
-        description: Document ID
-        sourceDefinition: 
-          - xmlizable: 
-            - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
-            - com.twinsoft.convertigo.beans.common.XMLVector: 
-              - java.lang.String: 
-                - ↑value: 1601558343766
-              - java.lang.String: 
-                - ↑value: ./document/couchdb_output/_id/text()
-      ↓_use_rev [variables.StepVariable-1601559195209]: 
-        description: (string) – Retrieves document of specified revision. Optional
-        sourceDefinition: 
-          - xmlizable: 
-            - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
-            - com.twinsoft.convertigo.beans.common.XMLVector: 
-              - java.lang.String: 
-                - ↑value: 1601559154110
-              - java.lang.String: 
-                - ↑value: ./text()
-    ↓conflict [steps.XMLComplexStep-1601559683605]: 
-      nodeName: conflict
-      output: false
-      ↓Copy [steps.XMLCopyStep-1601559704947]: 
-        output: false
-        sourceDefinition: 
-          - xmlizable: 
-            - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
-            - com.twinsoft.convertigo.beans.common.XMLVector: 
-              - java.lang.String: 
-                - ↑value: 1601559195205
-              - java.lang.String: 
-                - ↑value: ./document/couchdb_output/*[local-name()='date' or local-name()='_c8oAcl']
-    ↓Call_Transaction1 [steps.TransactionStep-1601560297966]: 
-      sourceTransaction: ResolveConflicts.resolveconflicts_fullsync.DeleteDocument
-      ↓_use_docid [variables.StepVariable-1601560297968]: 
-        description: Document ID
-        sourceDefinition: 
-          - xmlizable: 
-            - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
-            - com.twinsoft.convertigo.beans.common.XMLVector: 
-              - java.lang.String: 
-                - ↑value: 1601558343766
-              - java.lang.String: 
-                - ↑value: ./document/couchdb_output/_id/text()
-      ↓_use_rev [variables.StepVariable-1601560297970]: 
-        description: (string) – Actual document’s revision
-        sourceDefinition: 
-          - xmlizable: 
-            - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
-            - com.twinsoft.convertigo.beans.common.XMLVector: 
-              - java.lang.String: 
-                - ↑value: 1601559154110
-              - java.lang.String: 
-                - ↑value: ./text()
-↓IfExist [steps.IfExistStep-1601560741772]: 
+↓EachDoc [steps.IteratorStep-1601624131134]: 
+  comment: For each pushed document
   sourceDefinition: 
     - xmlizable: 
       - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
       - com.twinsoft.convertigo.beans.common.XMLVector: 
         - java.lang.String: 
-          - ↑value: 1601559649429
+          - ↑value: 1601558323895
         - java.lang.String: 
-          - ↑value: ./conflict
-  ↓Call_Transaction1 [steps.TransactionStep-1601560101665]: 
-    sourceTransaction: ResolveConflicts.resolveconflicts_fullsync.PostDocument
-    ↓_id [variables.StepVariable-1601560101667]: 
-      description: Document id
+          - ↑value: ./doc/item
+  ↓GetWiningDocumentWithConflicts [steps.TransactionStep-1601558343766]: 
+    comment: Get the wining document content with conflicts
+    sourceTransaction: ResolveConflicts.resolveconflicts_fullsync.GetDocumentWithConflicts
+    ↓_use_docid [variables.StepVariable-1601624050262]: 
+      description: Document ID
+      sourceDefinition: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: 1601624131134
+            - java.lang.String: 
+              - ↑value: ./_id/text()
+  ↓complex [steps.XMLComplexStep-1601559649429]: 
+    comment: Conflict container
+    output: false
+    ↓EachConflict [steps.IteratorStep-1601559154110]: 
+      comment: For each conflict
       sourceDefinition: 
         - xmlizable: 
           - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
@@ -94,15 +37,141 @@
             - java.lang.String: 
               - ↑value: 1601558343766
             - java.lang.String: 
-              - ↑value: ./document/couchdb_output/_id/text()
-    ↓data [variables.StepVariable-1601560101669]: 
-      description: Document content
-      sourceDefinition: 
-        - xmlizable: 
-          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
-          - com.twinsoft.convertigo.beans.common.XMLVector: 
-            - java.lang.String: 
-              - ↑value: 1601559649429
-            - java.lang.String: 
-              - ↑value: ./conflict
+              - ↑value: ./document/couchdb_output/_conflicts/item
+      ↓GetLosingDocument [steps.TransactionStep-1601559195205]: 
+        comment: Get the losing version of the document
+        sourceTransaction: ResolveConflicts.resolveconflicts_fullsync.GetDocumentWithConflicts
+        ↓_use_docid [variables.StepVariable-1601559195207]: 
+          description: Document ID
+          sourceDefinition: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+              - com.twinsoft.convertigo.beans.common.XMLVector: 
+                - java.lang.String: 
+                  - ↑value: 1601624131134
+                - java.lang.String: 
+                  - ↑value: ./_id/text()
+        ↓_use_rev [variables.StepVariable-1601559195209]: 
+          description: (string) – Retrieves document of specified revision. Optional
+          sourceDefinition: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+              - com.twinsoft.convertigo.beans.common.XMLVector: 
+                - java.lang.String: 
+                  - ↑value: 1601559154110
+                - java.lang.String: 
+                  - ↑value: ./text()
+      ↓conflict [steps.XMLComplexStep-1601559683605]: 
+        comment: Prepare the object with values to merge
+        nodeName: conflict
+        output: false
+        ↓type [steps.XMLAttributeStep-1601626023351]: 
+          comment: Needed for the JSON conversion
+          nodeName: type
+          nodeText: object
+        ↓date [steps.XMLElementStep-1601625617777]: 
+          comment: Copy the 'date' field
+          nodeName: date
+          output: false
+          sourceDefinition: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+              - com.twinsoft.convertigo.beans.common.XMLVector: 
+                - java.lang.String: 
+                  - ↑value: 1601559195205
+                - java.lang.String: 
+                  - ↑value: ./document/couchdb_output/date/text()
+        ↓author [steps.XMLElementStep-1601625683416]: 
+          comment: Create an 'author' field using the technical credential field
+          nodeName: author
+          output: false
+          sourceDefinition: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+              - com.twinsoft.convertigo.beans.common.XMLVector: 
+                - java.lang.String: 
+                  - ↑value: 1601559195205
+                - java.lang.String: 
+                  - ↑value: ./document/couchdb_output/_c8oAcl/text()
+      ↓DeleteLosingDocumentRevision [steps.TransactionStep-1601560297966]: 
+        comment: Remove the losing document revision from the database
+        sourceTransaction: ResolveConflicts.resolveconflicts_fullsync.DeleteDocument
+        ↓_use_docid [variables.StepVariable-1601560297968]: 
+          description: Document ID
+          sourceDefinition: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+              - com.twinsoft.convertigo.beans.common.XMLVector: 
+                - java.lang.String: 
+                  - ↑value: 1601624131134
+                - java.lang.String: 
+                  - ↑value: ./_id/text()
+        ↓_use_rev [variables.StepVariable-1601560297970]: 
+          description: (string) – Actual document’s revision
+          sourceDefinition: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+              - com.twinsoft.convertigo.beans.common.XMLVector: 
+                - java.lang.String: 
+                  - ↑value: 1601559154110
+                - java.lang.String: 
+                  - ↑value: ./text()
+  ↓IfConflict [steps.IfExistStep-1601560741772]: 
+    comment: Check if almost one conflict occurs
+    sourceDefinition: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+        - com.twinsoft.convertigo.beans.common.XMLVector: 
+          - java.lang.String: 
+            - ↑value: 1601559649429
+          - java.lang.String: 
+            - ↑value: ./conflict
+    ↓conflicts [steps.XMLComplexStep-1601624540961]: 
+      comment: Prepare an JSON array of prepared conflicts
+      nodeName: conflicts
+      output: false
+      ↓type [steps.XMLAttributeStep-1601624550502]: 
+        comment: Needed for the JSON conversion
+        nodeName: type
+        nodeText: array
+      ↓Copy [steps.XMLCopyStep-1601624647240]: 
+        comment: Copy prepared conflicts to the array
+        output: false
+        sourceDefinition: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+            - com.twinsoft.convertigo.beans.common.XMLVector: 
+              - java.lang.String: 
+                - ↑value: 1601559649429
+              - java.lang.String: 
+                - ↑value: ./conflict
+    ↓MergeConflicts [steps.TransactionStep-1601560101665]: 
+      comment: Put the conflicts array to a new version of the document
+      sourceTransaction: ResolveConflicts.resolveconflicts_fullsync.PostDocumentMerge
+      ↓_id [variables.StepVariable-1601560101667]: 
+        description: Document id
+        sourceDefinition: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+            - com.twinsoft.convertigo.beans.common.XMLVector: 
+              - java.lang.String: 
+                - ↑value: 1601624131134
+              - java.lang.String: 
+                - ↑value: ./_id/text()
+      ↓data [variables.StepVariable-1601624371978]: 
+        sourceDefinition: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+            - com.twinsoft.convertigo.beans.common.XMLVector: 
+              - java.lang.String: 
+                - ↑value: 1601624540961
+              - java.lang.String: 
+                - ↑value: .
 ↓doc [variables.RequestableMultiValuedVariable-1601558271267]: 
+  comment: Mandatory variable for a FullSync listener
+  xmlTypeAffectation: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XmlQName
+      - schemaDefinition: 
+        - ↑pLocalPart: arrayType
+        - ↑pNamespace: http://www.convertigo.com/convertigo/couchdb
