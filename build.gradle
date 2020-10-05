@@ -172,7 +172,7 @@ localBuild {
 	//// build mode of the native package, can be 'release' or 'debug' (default)
 	//// can also be configured with a -Pconvertigo.localBuild.mode as Gradle parameter
 	//// the Android 'debug' mode doesn't need signing configuration
-	// mode = 'debug'
+	mode = 'debug'
 	
 	//// define where are moved mobile package when the build success
 	//// can also be configured with a -Pconvertigo.localBuild.packageDestinationDir as Gradle parameter
@@ -184,7 +184,7 @@ localBuild {
 	
 	//// define the IOS Sign Identity used to sign the IPA package
 	//// can also be configured with a -Pconvertigo.localBuild.iosSignIdentity as Gradle parameter
-	// iosSignIdentity = (mode == 'release' ? 'iPhone Distribution' : 'iPhone Developer')
+	iosSignIdentity = (mode == 'release' ? 'iPhone Distribution' : 'iPhone Developer')
 	
 	//// define the Android Keystore file used to sign the release APK package
 	//// can also be configured with a -Pconvertigo.localBuild.androidKeystore as Gradle parameter

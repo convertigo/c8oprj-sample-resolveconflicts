@@ -46,7 +46,7 @@ jobs:
         echo "Build MyFirstNGX"
         gradle --no-daemon --stacktrace --info localBuild \
           -Pconvertigo.performsMobileBuild=true \
-          -Pconvertigo.load.mobileApplicationEndpoint=https://beta.convertigo.net/convertigo \
+          -Pconvertigo.load.mobileApplicationEndpoint=http://192.168.11.124:18080/convertigo \
           -Pconvertigo.localBuild.iosProvisioningProfile=$PWD/ios.mobileprovision \
           -Pconvertigo.localBuild.androidKeystore=$PWD/android.keystore \
           -Pconvertigo.localBuild.androidKeystorePassword=$ANDROID_KEYSTORE_PASSWORD \
