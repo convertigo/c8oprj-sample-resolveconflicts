@@ -1,5 +1,8 @@
 /_private/
 /.settings
+/.gradle/
+/build/
+
 
 /DisplayObjects/mobile/*
 !/DisplayObjects/mobile/assets
